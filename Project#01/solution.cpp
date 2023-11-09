@@ -18,10 +18,7 @@ int main(){
 	input >> natom;
 
 	while (input >> line){
-		if (input >> natom){
-			cout << natom << endl;		
-		}
-
+		cout << typeid(line).name() << endl;		
 	}
 
 	input.close();
