@@ -17,11 +17,14 @@ int main(){
 
 	input >> natom;
 
-	while (input >> line){
-		cout << typeid(line).name() << endl;		
-	}
+	for(int i=0; i < natom; i++)
+	{
+		input >> x_vect >> y_vect >> z_vect;
+	}		
 
 	input.close();
 
+	cout << x_vect << endl;
+	
 	return 0;
 }
