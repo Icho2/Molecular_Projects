@@ -32,10 +32,6 @@ int main(){
 	}		
 
 	input.close();
-	//for (double number:x_vect)
-	//{
-	//	cout << number << ", "
-	//}
 	
 	return 0;
 }
