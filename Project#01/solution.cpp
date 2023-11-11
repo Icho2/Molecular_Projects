@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <iomanip>
-#include <vector>
+#include <list>
 using namespace std;
 
 int main(){
@@ -9,22 +9,33 @@ int main(){
 	ifstream input("acetaldehyde.dat");
 	double pos;
 	int natom;
+	double numero;
 	string line;
-	vector<int> Z_val;
-	vector<double> x_vect;
-	vector<double> y_vect;
-	vector<double> z_vect;
+	list<int> Z_val;
+	list<double> x_vect;
+	list<double> y_vect;
+	list<double> z_vect;
 
 	input >> natom;
-
+	cout << natom << endl;
 	for(int i=0; i < natom; i++)
 	{
-		input >> x_vect >> y_vect >> z_vect;
+		input >> numero;
+		Z_val.push_back(numero);
+		input >> numero;
+		x_vect.push_back(numero);
+		input >> numero;
+		y_vect.push_back(numero);
+		input >> numero;
+		z_vect.push_back(numero);
+		cout << Z_val.back() << ", " << x_vect.back() << ", " << y_vect.back() << ", " << z_vect.back() << endl;
 	}		
 
 	input.close();
-
-	cout << x_vect << endl;
+	//for (double number:x_vect)
+	//{
+	//	cout << number << ", "
+	//}
 	
 	return 0;
 }
