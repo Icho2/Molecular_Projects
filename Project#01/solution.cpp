@@ -5,7 +5,7 @@
 
 int main(){
 //Step 1
-	ifstream input("acetaldehyde.dat");
+	std::ifstream input("acetaldehyde.dat");
 	double **R = new double* [mol.natom];
 	double pos;
 	int natom;
@@ -32,10 +32,12 @@ int main(){
 	}		
 
 	input.close();
-	
+
 //Step 2
-	for(int i=0; i < mol.natom; i++)
+	double xij, yij, zij;
+	for(int i=0; i < mol.natom; i++){
   		R[i] = new double[mol.natom];
+	}
 	
 	for(int i=0; i < mol.natom; i++){
 		for(int j=0; j < mol.atom; j++){
