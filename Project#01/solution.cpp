@@ -2,7 +2,7 @@
 #include <fstream>
 #include <iomanip>
 #include <list>
-#include <cstudio>
+#include <cstdio>
 #include <string>
 #include <cmath>
 
