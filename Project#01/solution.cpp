@@ -5,7 +5,7 @@
 using namespace std;
 
 int main(){
-
+//Step 1
 	ifstream input("acetaldehyde.dat");
 	double pos;
 	int natom;
