@@ -2,6 +2,7 @@
 #include <fstream>
 #include <iomanip>
 #include <list>
+#include <cstudio>
 #include <string>
 #include <cmath>
 
@@ -11,11 +12,11 @@ int main(){
 	double pos;
 	int natom;
 	double numero;
-	string line;
-	list<int> Z_val;
-	list<double> x_vect;
-	list<double> y_vect;
-	list<double> z_vect;
+	std::string line;
+  	int *Z_val = new int[natom];
+  	double *x_vect = new double[natom];
+  	double *y_vect = new double[natom];
+  	double *z_vect = new double[natom];
 
 	input >> natom;
 	std::cout << natom << "\n";
