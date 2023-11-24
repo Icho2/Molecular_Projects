@@ -3,7 +3,7 @@
 #include <iomanip>
 #include <list>
 #include <string>
-#include <math>
+#include <cmath>
 
 int main(){
 //Step 1
