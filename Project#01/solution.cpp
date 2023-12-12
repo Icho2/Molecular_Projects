@@ -21,9 +21,9 @@ int main(){
 	double numero; //atomic number of a said atom
 	std::string line;
 	std::vector<int> Z_val(natom);
-  	double *x_vect = new double[natom];
-  	double *y_vect = new double[natom];
-  	double *z_vect = new double[natom];
+  	std::vector<double> x_vect(natom);
+  	std::vector<double> y_vect(natom);
+  	std::vector<double> z_vect(natom);
 
 	std::cout << natom << "\n";
 	for(int i=0; i < natom; i++)
@@ -43,7 +43,7 @@ int main(){
 
 //Step 2
 	double xij, yij, zij;
-	double *R = new double[natom][natom];
+	std::vector<std::vector<double>> R(natom, std::vector<double>(natom, 0.0));
 	
 	for(int i=0; i < natom; i++){
 		for(int j=0; j < natom; j++){
