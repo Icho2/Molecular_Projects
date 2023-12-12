@@ -8,36 +8,42 @@
 
 int main(){
 //Step 1
+	//check if you are able to open up the molcule file first
 	std::ifstream input("acetaldehyde.dat");
-	double pos;
-	int natom;
-	double numero;
+	if (!input.is_open()){
+		std::cerr << "Youre gay.\n";
+	       return 1;
+	}
+
+	double pos; //
+	int natom; //number of atoms in the molecule
+	input >> natom;
+	double numero; //atomic number of a said atom
 	std::string line;
-  	int *Z_val = new int[natom];
+	std::vector<int> Z_val(natom);
   	double *x_vect = new double[natom];
   	double *y_vect = new double[natom];
   	double *z_vect = new double[natom];
 
-	input >> natom;
 	std::cout << natom << "\n";
 	for(int i=0; i < natom; i++)
 	{
 		input >> numero;
-		Z_val.push_back(numero);
+		Z_val[i] = numero;
 		input >> numero;
-		x_vect.push_back(numero);
+		x_vect[i] = numero;
 		input >> numero;
-		y_vect.push_back(numero);
+		y_vect[i] = numero;
 		input >> numero;
-		z_vect.push_back(numero);
-		std::cout << Z_val.back() << ", " << x_vect.back() << ", " << y_vect.back() << ", " << z_vect.back() << "\n";
+		z_vect[i]= numero;
+		std::cout << Z_val[i] << ", " << x_vect[i] << ", " << y_vect[i] << ", " << z_vect[i] << "\n";
 	}		
 
 	input.close();
 
 //Step 2
 	double xij, yij, zij;
-	double R[natom][natom];
+	double *R = new double[natom][natom];
 	
 	for(int i=0; i < natom; i++){
 		for(int j=0; j < natom; j++){
@@ -45,15 +51,19 @@ int main(){
 			yij = y_vect[i] - y_vect[j];
 			zij = z_vect[i] - z_vect[j];;
 			R[i][j] = sqrt(pow(xij,2) + pow(yij,2) + pow(zij,2));
-			std::cout << R[i][j] << "\n";
+			//std::cout << R[i][j] << "\n";
 			}	
 		}
 
-	//deleting data after its served its purpose
-	for(int i=0; i < mol.natom; i++)
-  		delete[] R[i];
+	//deleting data after its served its purpose}
+	for (int i = 0; i < natom; ++i) {
+		    delete[] R[i];
+	}
 	delete[] R;
-
+	delete[] x_vect;
+	delete[] y_vect;
+	delete[] z_vect;
+	delete[] Z_val;
 
 	return 0;
 }
