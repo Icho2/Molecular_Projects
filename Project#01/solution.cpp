@@ -10,9 +10,9 @@
 int main(){
 //Step 1
 	//check if you are able to open up the molcule file first
-	std::ifstream input("cetaldehyde.dat");
+	std::ifstream input("acetaldehyde.dat");
 	if (!input.is_open()){
-		std::cerr << "Youre gay.\n";
+		std::cerr << "Uninstall yourself.\n";
 	       return 1;
 	}
 
