@@ -10,7 +10,7 @@
 int main(){
 //Step 1
 	//check if you are able to open up the molcule file first
-	std::ifstream input("acetaldehyde.dat");
+	std::ifstream input("cetaldehyde.dat");
 	if (!input.is_open()){
 		std::cerr << "Youre gay.\n";
 	       return 1;
@@ -35,7 +35,7 @@ int main(){
 		y_vect[i] = numero;
 		input >> std::setprecision(12) >> numero;
 		z_vect[i]= numero;
-		std::cout << Z_val[i] << ", " << std::setprecision(12) << x_vect[i] << ", " << std::setprecision(12) << y_vect[i] << ", " << std::setprecision(12) << z_vect[i] << "\n";
+		//std::cout << Z_val[i] << ", " << std::setprecision(12) << x_vect[i] << ", " << std::setprecision(12) << y_vect[i] << ", " << std::setprecision(12) << z_vect[i] << "\n";
 	}		
 
 	input.close();
