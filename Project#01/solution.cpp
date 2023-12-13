@@ -10,7 +10,7 @@
 int main(){
 //Step 1
 	//check if you are able to open up the molcule file first
-	std::ifstream input("acetaldehyde.dat");
+	std::ifstream input("input/benzene.dat");
 	if (!input.is_open()){
 		std::cerr << "Uninstall yourself.\n";
 	       return 1;
@@ -24,7 +24,7 @@ int main(){
   	std::vector<double> y_vect(natom); // y ''
   	std::vector<double> z_vect(natom); // z ''
 
-	std::cout << natom << "\n";
+	//std::cout << natom << "\n";
 	for(int i=0; i < natom; i++)
 	{
 		input >> numero;
