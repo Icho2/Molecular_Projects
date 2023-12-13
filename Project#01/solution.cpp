@@ -24,7 +24,7 @@ int main(){
   	std::vector<double> y_vect(natom); // y ''
   	std::vector<double> z_vect(natom); // z ''
 
-	//std::cout << natom << "\n";
+	std::cout << natom << "\n";
 	for(int i=0; i < natom; i++)
 	{
 		input >> numero;
@@ -35,7 +35,7 @@ int main(){
 		y_vect[i] = numero;
 		input >> std::setprecision(12) >> numero;
 		z_vect[i]= numero;
-		//std::cout << Z_val[i] << ", " << std::setprecision(12) << x_vect[i] << ", " << std::setprecision(12) << y_vect[i] << ", " << std::setprecision(12) << z_vect[i] << "\n";
+		std::cout << Z_val[i] << ", " << std::setprecision(12) << x_vect[i] << ", " << std::setprecision(12) << y_vect[i] << ", " << std::setprecision(12) << z_vect[i] << "\n";
 	}		
 
 	input.close();
