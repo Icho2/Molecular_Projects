@@ -5,6 +5,7 @@
 #include <cstdio>
 #include <string>
 #include <cmath>
+#include <vector>
 
 int main(){
 //Step 1
