@@ -35,7 +35,7 @@ int main(){
 		y_vect[i] = numero;
 		input >> numero;
 		z_vect[i]= numero;
-		std::cout << Z_val[i] << ", " << x_vect[i] << ", " << y_vect[i] << ", " << z_vect[i] << "\n";
+		std::cout << Z_val[i] << ", " << std::setprecision(12) << x_vect[i] << ", " << y_vect[i] << ", " << z_vect[i] << "\n";
 	}		
 
 	input.close();
