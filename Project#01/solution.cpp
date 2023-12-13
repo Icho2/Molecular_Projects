@@ -26,7 +26,7 @@ int main(){
   	std::vector<double> y_vect(natom);
   	std::vector<double> z_vect(natom);
 
-	std::cout << natom << "\n";
+	//std::cout << natom << "\n";
 	for(int i=0; i < natom; i++)
 	{
 		input >> numero;
@@ -37,7 +37,7 @@ int main(){
 		y_vect[i] = numero;
 		input >> numero;
 		z_vect[i]= numero;
-		std::cout << Z_val[i] << ", " << x_vect[i] << ", " << y_vect[i] << ", " << z_vect[i] << "\n";
+		//std::cout << Z_val[i] << ", " << x_vect[i] << ", " << y_vect[i] << ", " << z_vect[i] << "\n";
 	}		
 
 	input.close();
@@ -52,19 +52,8 @@ int main(){
 			yij = y_vect[i] - y_vect[j];
 			zij = z_vect[i] - z_vect[j];;
 			R[i][j] = sqrt(pow(xij,2) + pow(yij,2) + pow(zij,2));
-			//std::cout << R[i][j] << "\n";
+			std::cout << R[i][j] << "\n";
 			}	
 		}
-
-	//deleting data after its served its purpose}
-	//for (int i = 0; i < natom; ++i) {
-	//	    delete[] R[i];
-	//}
-	//delete[] R;
-	//delete[] x_vect;
-	//delete[] y_vect;
-	//delete[] z_vect;
-	//delete[] Z_val;
-
 	return 0;
 }
