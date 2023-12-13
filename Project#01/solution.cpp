@@ -16,17 +16,15 @@ int main(){
 	       return 1;
 	}
 
-	double pos; //
 	int natom; //number of atoms in the molecule
 	input >> natom;
-	double numero; //atomic number of a said atom
-	std::string line;
-	std::vector<int> Z_val(natom);
-  	std::vector<double> x_vect(natom);
-  	std::vector<double> y_vect(natom);
-  	std::vector<double> z_vect(natom);
+	double numero; //using it to read the inputs of the molecule file
+	std::vector<int> Z_val(natom); //atomic number of a said atom
+  	std::vector<double> x_vect(natom); // x values
+  	std::vector<double> y_vect(natom); // y ''
+  	std::vector<double> z_vect(natom); // z ''
 
-	//std::cout << natom << "\n";
+	std::cout << natom << "\n";
 	for(int i=0; i < natom; i++)
 	{
 		input >> numero;
@@ -37,7 +35,7 @@ int main(){
 		y_vect[i] = numero;
 		input >> numero;
 		z_vect[i]= numero;
-		//std::cout << Z_val[i] << ", " << x_vect[i] << ", " << y_vect[i] << ", " << z_vect[i] << "\n";
+		std::cout << Z_val[i] << ", " << x_vect[i] << ", " << y_vect[i] << ", " << z_vect[i] << "\n";
 	}		
 
 	input.close();
@@ -52,7 +50,7 @@ int main(){
 			yij = y_vect[i] - y_vect[j];
 			zij = z_vect[i] - z_vect[j];;
 			R[i][j] = sqrt(pow(xij,2) + pow(yij,2) + pow(zij,2));
-			std::cout << R[i][j] << "\n";
+			//std::cout << R[i][j] << "\n";
 			}	
 		}
 	return 0;
