@@ -28,7 +28,7 @@ int main(){
 	for(int i=0; i < natom; i++)
 	{
 		input >> numero;
-		Z_val[i] = numero;
+		Z_val[i] = std::setprecision(12) << numero;
 		input >> numero;
 		x_vect[i] = numero;
 		input >> numero;
