@@ -56,14 +56,14 @@ int main(){
 		}
 
 	//deleting data after its served its purpose}
-	for (int i = 0; i < natom; ++i) {
-		    delete[] R[i];
-	}
-	delete[] R;
-	delete[] x_vect;
-	delete[] y_vect;
-	delete[] z_vect;
-	delete[] Z_val;
+	//for (int i = 0; i < natom; ++i) {
+	//	    delete[] R[i];
+	//}
+	//delete[] R;
+	//delete[] x_vect;
+	//delete[] y_vect;
+	//delete[] z_vect;
+	//delete[] Z_val;
 
 	return 0;
 }
