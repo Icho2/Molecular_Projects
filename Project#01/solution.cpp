@@ -36,7 +36,7 @@ int main(){
 		y_vect[i] = numero;
 		input >> std::fixed >> std::setprecision(12) >> numero;
 		z_vect[i]= numero;
-		std::cout << Z_val[i] << "  " << std::setprecision(12) << std::showpoint << x_vect[i] << "  " << y_vect[i] << "  " << z_vect[i] << "\n";
+		printf("%d %20.12f %20.12f %20.12f\n", (int) Z_val[i], x_vect[i], y_vect[i], z_vect[i]);
 	}		
 
 	input.close();
