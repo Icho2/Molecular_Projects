@@ -10,7 +10,7 @@
 int main(){
 //Step 1
 	//check if you are able to open up the molcule file first
-	std::ifstream input("input/benzene.dat");
+	std::ifstream input("input/acetaldehyde.dat");
 	if (!input.is_open()){
 		std::cerr << "Uninstall yourself.\n";
 	       return 1;
