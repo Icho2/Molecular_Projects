@@ -46,14 +46,14 @@ int main(){
 	std::vector<std::vector<double>> R(natom, std::vector<double>(natom, 0.0));
 	
 	std::cout << "Interatomic distances (bohr):\n";
-	
+
 	for(int i=0; i < natom-1; i++){
-		for(int j=i; j < natom; j++){
+		for(int j=i+1; j < natom; j++){
 			xij = x_vect[i] - x_vect[j];
 			yij = y_vect[i] - y_vect[j];
 			zij = z_vect[i] - z_vect[j];
 			R[i][j] = sqrt(pow(xij,2) + pow(yij,2) + pow(zij,2));
-			std::cout << i << " " << j << " " << R[i][j] << " ";
+			std::cout << i << " " << j << " " << R[i][j] << " \n";
 		}
 		std::cout << "\n";
 	}
