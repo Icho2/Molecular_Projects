@@ -62,6 +62,8 @@ int main(){
 	std::vector<double> e_ji(natom);
 	std::vector<double> e_jk(natom);
 	double dot_product = 0;
+	double ex_ij, ey_ij, ez_ij, ex_jk, ey_jk, ez_jk, angle;
+	int k;
 
 	for(int i=1; i<natom-1; i++){
 		for(int j=0; j<i; j++){ //j is the central atom
