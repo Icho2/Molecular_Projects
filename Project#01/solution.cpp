@@ -79,8 +79,9 @@ int main(){
 			for(int s=0;s<e_ji.size();s++){
 				dot_product = dot_product + e_ji[s] * e_jk[s];
 			}
+			std::cout << dot_product << "\n";
 			angle = acos(dot_product);
-			std::cout << angle << "\n";
+			//std::cout << angle << "\n";
 		}
 	}
 	return 0;
