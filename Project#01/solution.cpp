@@ -54,7 +54,7 @@ int main(){
 			x[i][j] = x_vect[i] - x_vect[j];
 			y[i][j] = y_vect[i] - y_vect[j];
 			z[i][j] = z_vect[i] - z_vect[j];
-			R[i][j] = sqrt(pow(xij,2) + pow(yij,2) + pow(zij,2));
+			R[i][j] = sqrt(pow(x[i][j],2) + pow(y[i][j],2) + pow(z[i][j],2));
 			std::cout << i << " " << j << " " << R[i][j] << " \n";
 		}
 	}
