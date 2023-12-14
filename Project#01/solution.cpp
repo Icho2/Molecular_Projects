@@ -42,9 +42,7 @@ int main(){
 	input.close();
 
 //Step 2
-	//int R_size = 0;
 	double xij, yij, zij;
-
 	std::vector<std::vector<double>> R(natom, std::vector<double>(natom, 0.0));
 	
 	for(int i=0; i < natom-1; i++){
@@ -53,7 +51,7 @@ int main(){
 			yij = y_vect[i] - y_vect[j];
 			zij = z_vect[i] - z_vect[j];
 			R[i][j] = sqrt(pow(xij,2) + pow(yij,2) + pow(zij,2));
-			std::cout << R[i][j] << " ";
+			std::cout << i << " " << j << " " << R[i][j] << " ";
 		}
 		std::cout << "\n";
 	}
