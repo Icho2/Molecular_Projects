@@ -41,9 +41,9 @@ int main(){
 	input.close();
 
 //Step 2 Bond Lengths
-	std::vector<std::vector<double>> xij(natom, std::vector<double>(natom, 0.0))
-	std::vector<std::vector<double>> yij(natom, std::vector<double>(natom, 0.0))
-	std::vector<std::vector<double>> zij(natom, std::vector<double>(natom, 0.0))
+	std::vector<std::vector<double>> xij(natom, std::vector<double>(natom, 0.0));
+	std::vector<std::vector<double>> yij(natom, std::vector<double>(natom, 0.0));
+	std::vector<std::vector<double>> zij(natom, std::vector<double>(natom, 0.0));
 	//double xij, yij, zij;
 	std::vector<std::vector<double>> R(natom, std::vector<double>(natom, 0.0));
 	
