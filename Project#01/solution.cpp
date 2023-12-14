@@ -41,17 +41,19 @@ int main(){
 	input.close();
 
 //Step 2 Bond Lengths
-	//std::vector<std::vector<double>> xij()
-	double xij, yij, zij;
+	std::vector<std::vector<double>> xij(natom, std::vector<double>(natom, 0.0))
+	std::vector<std::vector<double>> yij(natom, std::vector<double>(natom, 0.0))
+	std::vector<std::vector<double>> zij(natom, std::vector<double>(natom, 0.0))
+	//double xij, yij, zij;
 	std::vector<std::vector<double>> R(natom, std::vector<double>(natom, 0.0));
 	
 	std::cout << "Interatomic distances (bohr):\n";
 
 	for(int i=1; i < natom; i++){
 		for(int j=0; j < i; j++){
-			xij = x_vect[i] - x_vect[j];
-			yij = y_vect[i] - y_vect[j];
-			zij = z_vect[i] - z_vect[j];
+			x[i][j] = x_vect[i] - x_vect[j];
+			y[i][j] = y_vect[i] - y_vect[j];
+			z[i][j] = z_vect[i] - z_vect[j];
 			R[i][j] = sqrt(pow(xij,2) + pow(yij,2) + pow(zij,2));
 			std::cout << i << " " << j << " " << R[i][j] << " \n";
 		}
