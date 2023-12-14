@@ -4,8 +4,6 @@
 #include <cstdio>
 #include <cmath>
 #include <vector>
-//#include <list>
-//#include <string>
 
 int main(){
 //Step 1: Read the Coordinate Data from Input
@@ -57,8 +55,8 @@ int main(){
 			std::cout << i << " " << j << " " << R[i][j] << " \n";
 		}
 	}
-	return 0;
 
 //Step 3 Angles
-
+	
+	return 0;
 }
