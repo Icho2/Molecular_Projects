@@ -47,8 +47,8 @@ int main(){
 	
 	std::cout << "Interatomic distances (bohr):\n";
 
-	for(int i=0; i < natom-1; i++){
-		for(int j=i+1; j < natom; j++){
+	for(int i=1; i < natom; i++){
+		for(int j=i-1; j > 0; j--){
 			xij = x_vect[i] - x_vect[j];
 			yij = y_vect[i] - y_vect[j];
 			zij = z_vect[i] - z_vect[j];
