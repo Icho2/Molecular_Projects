@@ -41,6 +41,7 @@ int main(){
 	input.close();
 
 //Step 2 Bond Lengths
+	//std::vector<std::vector<double>> xij()
 	double xij, yij, zij;
 	std::vector<std::vector<double>> R(natom, std::vector<double>(natom, 0.0));
 	
