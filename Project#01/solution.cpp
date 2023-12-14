@@ -75,7 +75,7 @@ int main(){
 			ex_jk = -x[k][j]/R[i][j]; e_jk.push_back(ex_ij);
 			ey_jk = -y[k][j]/R[i][j]; e_jk.push_back(ey_ij);
 			ez_jk = -z[k][j]/R[i][j]; e_jk.push_back(ez_ij);
-			for(int s=0;s<ex_ij.size();s++){
+			for(int s=0;s<ex_ji.size();s++){
 				dot_product = dot_product + ex_ij[s] * ex_jk[s];
 			}
 			angle = acos(dot_product);
