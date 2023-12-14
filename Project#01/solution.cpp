@@ -1,14 +1,15 @@
 #include <iostream>
 #include <fstream>
 #include <iomanip>
-#include <list>
 #include <cstdio>
-#include <string>
 #include <cmath>
 #include <vector>
+//#include <list>
+//#include <string>
 
 int main(){
-//Step 1
+//Step 1: Read the Coordinate Data from Input
+
 	//check if you are able to open up the molcule file first
 	std::ifstream input("input/acetaldehyde.dat");
 	if (!input.is_open()){
@@ -41,7 +42,7 @@ int main(){
 
 	input.close();
 
-//Step 2
+//Step 2 Bond Lengths
 	double xij, yij, zij;
 	std::vector<std::vector<double>> R(natom, std::vector<double>(natom, 0.0));
 	
