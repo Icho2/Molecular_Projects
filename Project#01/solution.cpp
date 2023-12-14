@@ -45,6 +45,8 @@ int main(){
 	double xij, yij, zij;
 	std::vector<std::vector<double>> R(natom, std::vector<double>(natom, 0.0));
 	
+	std::cout << "Interatomic distances (bohr):\n";
+	
 	for(int i=0; i < natom-1; i++){
 		for(int j=i; j < natom; j++){
 			xij = x_vect[i] - x_vect[j];
