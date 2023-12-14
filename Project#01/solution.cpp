@@ -65,6 +65,7 @@ int main(){
 	double ex_ij, ey_ij, ez_ij, ex_jk, ey_jk, ez_jk, angle;
 	int k;
 
+	std::cout << "Angles\n";
 	for(int i=1; i<natom-1; i++){
 		for(int j=0; j<i; j++){ //j is the central atom
 			dot_product = 0;
