@@ -24,7 +24,8 @@ int main(){
   	std::vector<double> y_vect(natom); // y ''
   	std::vector<double> z_vect(natom); // z ''
 
-	//std::cout << natom << "\n";
+	std::cout << "Number of atoms: " << natom << "\n";
+	std::cout << "Input Cartesian coordinates:\n";
 	for(int i=0; i < natom; i++)
 	{
 		input >> numero;
@@ -35,7 +36,7 @@ int main(){
 		y_vect[i] = numero;
 		input >> std::setprecision(12) >> numero;
 		z_vect[i]= numero;
-		//std::cout << Z_val[i] << ", " << std::setprecision(12) << x_vect[i] << ", " << std::setprecision(12) << y_vect[i] << ", " << std::setprecision(12) << z_vect[i] << "\n";
+		std::cout << Z_val[i] << ", " << std::setprecision(12) << x_vect[i] << ", " << std::setprecision(12) << y_vect[i] << ", " << std::setprecision(12) << z_vect[i] << "\n";
 	}		
 
 	input.close();
@@ -47,14 +48,12 @@ int main(){
 	std::vector<std::vector<double>> R(natom, std::vector<double>(natom, 0.0));
 	
 	for(int i=0; i < natom-1; i++){
-		for(int j=0; j < natom; j++){
-			if(i!=j){
+		for(int j=i; j < natom; j++){
 			xij = x_vect[i] - x_vect[j];
 			yij = y_vect[i] - y_vect[j];
 			zij = z_vect[i] - z_vect[j];
 			R[i][j] = sqrt(pow(xij,2) + pow(yij,2) + pow(zij,2));
 			std::cout << R[i][j] << " ";
-			}	
 		}
 		std::cout << "\n";
 	}
