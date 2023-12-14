@@ -77,9 +77,10 @@ int main(){
 			ey_jk = -y[k][j]/R[i][j]; e_jk.push_back(ey_ij);
 			ez_jk = -z[k][j]/R[i][j]; e_jk.push_back(ez_ij);
 			for(int s=0;s<e_ji.size();s++){
+				std::cout << e_ji[s] << "\n";
 				dot_product = dot_product + (e_ji[s] * e_jk[s]);
 			}
-			std::cout << dot_product << "\n";
+			//std::cout << dot_product << "\n";
 			angle = acos(dot_product);
 			//std::cout << angle << "\n";
 		}
