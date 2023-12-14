@@ -44,7 +44,6 @@ int main(){
 	std::vector<std::vector<double>> x(natom, std::vector<double>(natom, 0.0));
 	std::vector<std::vector<double>> y(natom, std::vector<double>(natom, 0.0));
 	std::vector<std::vector<double>> z(natom, std::vector<double>(natom, 0.0));
-	//double xij, yij, zij;
 	std::vector<std::vector<double>> R(natom, std::vector<double>(natom, 0.0));
 	
 	std::cout << "Interatomic distances (bohr):\n";
@@ -60,6 +59,26 @@ int main(){
 	}
 
 //Step 3 Angles
-	
+	std::vector<double> e_ji(natom);
+	std::vector<double> e_jk(natom);
+	double dot_product = 0;
+
+	for(int i=1; i<natom-1; i++){
+		for(int j=0; j<i; j++){ //j is the central atom
+			dot_product = 0;
+			k = i+1;
+			ex_ij = -x[i][j]/R[i][j]; e_ji.push_back(ex_ij);
+			ey_ij = -y[i][j]/R[i][j]; e_ji.push_back(ey_ij);
+			ez_ij = -z[i][j]/R[i][j]; e_ji.push_back(ez_ij);
+			ex_jk = -x[k][j]/R[i][j]; e_jk.push_back(ex_ij);
+			ey_jk = -y[k][j]/R[i][j]; e_jk.push_back(ey_ij);
+			ez_jk = -z[k][j]/R[i][j]; e_jk.push_back(ez_ij);
+			for(int s=0;s<ex_ij.size();s++){
+				dot_product = dot_product + ex_ij[s] * ex_jk[s];
+			}
+			angle = acos(dot_product);
+			std::cout << angle << "\n";
+		}
+	}
 	return 0;
 }
