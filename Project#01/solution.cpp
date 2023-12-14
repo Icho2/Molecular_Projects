@@ -55,7 +55,6 @@ int main(){
 			R[i][j] = sqrt(pow(xij,2) + pow(yij,2) + pow(zij,2));
 			std::cout << i << " " << j << " " << R[i][j] << " \n";
 		}
-		std::cout << "\n";
 	}
 	return 0;
 }
