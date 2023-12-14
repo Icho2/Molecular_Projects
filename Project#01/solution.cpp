@@ -73,11 +73,11 @@ int main(){
 			ex_ij = -x[i][j]/R[i][j]; e_ji.push_back(ex_ij);
 			ey_ij = -y[i][j]/R[i][j]; e_ji.push_back(ey_ij);
 			ez_ij = -z[i][j]/R[i][j]; e_ji.push_back(ez_ij);
-			ex_jk = -x[k][j]/R[i][j]; e_jk.push_back(ex_ij);
-			ey_jk = -y[k][j]/R[i][j]; e_jk.push_back(ey_ij);
-			ez_jk = -z[k][j]/R[i][j]; e_jk.push_back(ez_ij);
+			ex_jk = -x[k][j]/R[k][j]; e_jk.push_back(ex_ij);
+			ey_jk = -y[k][j]/R[k][j]; e_jk.push_back(ey_ij);
+			ez_jk = -z[k][j]/R[k][j]; e_jk.push_back(ez_ij);
 			for(int s=0;s<e_ji.size();s++){
-				std::cout << e_ji[s] << "\n";
+				//std::cout << e_ji[s] << "\n";
 				dot_product = dot_product + (e_ji[s] * e_jk[s]);
 			}
 			//std::cout << dot_product << "\n";
