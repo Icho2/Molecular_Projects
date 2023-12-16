@@ -59,30 +59,44 @@ int main(){
 	}
 
 //Step 3 Angles
-	std::vector<double> e_ji(natom);
-	std::vector<double> e_jk(natom);
+	std::vector<double> e_ji;
+	std::vector<double> e_jk;
 	double dot_product = 0;
 	double ex_ij, ey_ij, ez_ij, ex_jk, ey_jk, ez_jk, angle;
 	int k;
 
 	std::cout << "Angles\n";
-	for(int i=1; i<natom-1; i++){
+	//for(int i=1; i<natom-1; i++){
+	for(int i=1; i<2; i++){
 		for(int j=0; j<i; j++){ //j is the central atom
-			dot_product = 0;
 			k = i+1;
-			ex_ij = -x[i][j]/R[i][j]; e_ji.push_back(ex_ij);
-			ey_ij = -y[i][j]/R[i][j]; e_ji.push_back(ey_ij);
-			ez_ij = -z[i][j]/R[i][j]; e_ji.push_back(ez_ij);
-			ex_jk = -x[k][j]/R[k][j]; e_jk.push_back(ex_ij);
-			ey_jk = -y[k][j]/R[k][j]; e_jk.push_back(ey_ij);
-			ez_jk = -z[k][j]/R[k][j]; e_jk.push_back(ez_ij);
+			//std::cout << R[k][j] << "\n";
+			ex_ij = -x[i][j]/R[i][j]; 
+			e_ji.push_back(ex_ij);
+			ey_ij = -y[i][j]/R[i][j]; 
+			e_ji.push_back(ey_ij);
+			ez_ij = -z[i][j]/R[i][j]; 
+			std::cout << "ez_ij "  << ez_ij << "\n";
+			e_ji.push_back(ez_ij);
+			ex_jk = -x[k][j]/R[k][j];
+		       	std::cout << "ex_jk " << ex_jk << "\n";	
+			e_jk.push_back(ex_jk);
+			ey_jk = -y[k][j]/R[k][j]; 
+			e_jk.push_back(ey_jk);
+			ez_jk = -z[k][j]/R[k][j]; 
+			std::cout << "ez_jk " << ez_jk << "\n";
+			e_jk.push_back(ez_jk);
 			for(int s=0;s<e_ji.size();s++){
+				//std::cout << s << "\n";
 				//std::cout << e_ji[s] << "\n";
+				//std::cout << "multiple inside cos^-1 funct "  << e_ji[s] * e_jk[s] << "\n";
 				dot_product = dot_product + (e_ji[s] * e_jk[s]);
 			}
+			std::cout << "dot product: " << dot_product << "\n";
+			//std::cout << "new\n"; 
 			//std::cout << dot_product << "\n";
 			angle = acos(dot_product);
-			//std::cout << angle << "\n";
+			std::cout << "angle: "<< angle << "\n";
 		}
 	}
 	return 0;
