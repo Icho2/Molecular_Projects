@@ -67,36 +67,40 @@ int main(){
 
 	std::cout << "Angles\n";
 	//for(int i=1; i<natom-1; i++){
-	for(int i=1; i<2; i++){
+	for(int i=0; i<natom; i++){
 		for(int j=0; j<i; j++){ //j is the central atom
-			k = i+1;
-			//std::cout << R[k][j] << "\n";
-			ex_ij = -x[i][j]/R[i][j]; 
-			e_ji.push_back(ex_ij);
-			ey_ij = -y[i][j]/R[i][j]; 
-			e_ji.push_back(ey_ij);
-			ez_ij = -z[i][j]/R[i][j]; 
-			std::cout << "ez_ij "  << ez_ij << "\n";
-			e_ji.push_back(ez_ij);
-			ex_jk = -x[k][j]/R[k][j];
-		       	std::cout << "ex_jk " << ex_jk << "\n";	
-			e_jk.push_back(ex_jk);
-			ey_jk = -y[k][j]/R[k][j]; 
-			e_jk.push_back(ey_jk);
-			ez_jk = -z[k][j]/R[k][j]; 
-			std::cout << "ez_jk " << ez_jk << "\n";
-			e_jk.push_back(ez_jk);
-			for(int s=0;s<e_ji.size();s++){
+			for(int k=0; k<j; k++){
+				//std::cout << R[k][j] << "\n";
+				ex_ij = -x[i][j]/R[i][j]; 
+				e_ji.push_back(ex_ij);
+				ey_ij = -y[i][j]/R[i][j]; 
+				e_ji.push_back(ey_ij);
+				ez_ij = -z[i][j]/R[i][j]; 
+				//std::cout << "ez_ij "  << ez_ij << "\n";
+				e_ji.push_back(ez_ij);
+				ex_jk = -x[k][j]/R[k][j];
+				//std::cout << "ex_jk " << ex_jk << "\n";	
+				e_jk.push_back(ex_jk);
+				ey_jk = -y[k][j]/R[k][j]; 
+				e_jk.push_back(ey_jk);
+				ez_jk = -z[k][j]/R[k][j]; 
+				//std::cout << "ez_jk " << ez_jk << "\n";
+				e_jk.push_back(ez_jk);
+			}
+			if(R[i][j] < 4.0 && R[k][j] < 4.0){
+				for(int s=0;s<e_ji.size();s++){
 				//std::cout << s << "\n";
 				//std::cout << e_ji[s] << "\n";
 				//std::cout << "multiple inside cos^-1 funct "  << e_ji[s] * e_jk[s] << "\n";
 				dot_product = dot_product + (e_ji[s] * e_jk[s]);
+				}
+				//std::cout << "dot product: " << dot_product << "\n";
+				//std::cout << "new\n"; 
+				//std::cout << dot_product << "\n";
+				angle = acos(dot_product);
+				std::cout << "angle: "<< angle << "\n";
 			}
-			std::cout << "dot product: " << dot_product << "\n";
-			//std::cout << "new\n"; 
-			//std::cout << dot_product << "\n";
-			angle = acos(dot_product);
-			std::cout << "angle: "<< angle << "\n";
+			
 		}
 	}
 	return 0;
