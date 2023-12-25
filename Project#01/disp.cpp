@@ -4,6 +4,6 @@
 int main(){
 	
 	molecule acetaldehyde("input/acetaldehyde.dat");
-	acetaldehyde.get_coordinates();
+	acetaldehyde.display_coordinates();
 	return 0;
 }
