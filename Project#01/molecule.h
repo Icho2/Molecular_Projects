@@ -6,7 +6,7 @@ public:
     int natom;
     int charge;
     int numero;
-	int *z_val; //atomic number of a said atom
+    int *z_val; //atomic number of a said atom
     double geom;
     std::string point_group;
 
