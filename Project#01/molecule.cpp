@@ -1,11 +1,20 @@
 #include "molecule.h"
 #include <cstdio>
-
-int disp_coordinates()
+ 
+void Molecule::print_geom()
 {
-	for(int i=0; i < natom; i++)
-    	{printf("%d %8.5f %8.5f %8.5f\n", z_val[i], geom[i][0], geom[i][1], geom[i][2]);}
+  for(int i=0; i < natom; i++)
+    printf("%d %8.5f %8.5f %8.5f\n", zvals[i], geom[i][0], geom[i][1], geom[i][2]);
 }
-
-molecule::molecule(){ }
-molecule::~molecule(){ }
+ 
+void Molecule::translate(double x, double y, double z)
+{
+  for(int i=0; i < natom; i++) {
+     geom[i][0] += x;
+     geom[i][1] += y;
+     geom[i][2] += z;
+  }
+}
+ 
+Molecule::Molecule(){ }
+Molecule::~Molecule(){ }

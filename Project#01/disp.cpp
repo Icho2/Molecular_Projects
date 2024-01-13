@@ -6,18 +6,20 @@ int main(){
 	
 	std::ifstream file;
 	file.open("acetaldehyde.dat");
-	molecule acetaldehyde;
 	
-	int natom;
-	file >> natom;
-	std::cout << natom << "\n";
-	int charge;
-	int numero;
-	int *z_val;
-	double geom;
-	std::string point_group;
+	Molecule acetaldehyde;
 	
-	//acetaldehyde.disp_coordinates();
+	file >> acetaldehyde.natom;
+	std::cout << acetaldehyde.natom << "\n";
+	acetaldehyde.charge = 0;
+	acetaldehyde.zvals = new int[acetaldehyde.natom];
+	acetaldehyde.geom = new double* [acetaldehyde.natom];
 	
+	for(int i=0; i < acetaldehyde.natom; i++)
+	{
+		acetaldehyde.geom[i] = new double[3];
+	}
+
+
 	return 0;
 }
