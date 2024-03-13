@@ -8,17 +8,20 @@ using std::string;
 using std::ios;
 
 int main(){
-	ifstream my_input("input/acetaldehyde.dat", ios::in);		
+	FILE *my_input;		
 	string line;
-	if (my_input.is_open()) {
-		while (getline(my_input, line)) {
-			cout << line << endl;
-		}
-		my_input.close();
-	}
+	int natom;
+	my_input = fopen("input/acetaldehyde.dat", "r");
+
+	fscanf(my_input, "%d", &natom);
+	int zval[natom];
+        double coordinates[natom][3];
+	for(int i=0; i < natom; i++)
+		fscanf(my_input, "%d %lf %lf %lf",  &zval[i], &coordinates[i][0], &coordinates[i][1], &coordinates[i][2]);
 	
-	else {
-		cout << "Unable to open file" << endl;
-	}
+	cout << natom << endl;
+	for(int i=0; i<natom; i++)
+		printf("%d %lf %lf %lf \n",  zval[i], coordinates[i][0], coordinates[i][1], coordinates[i][2]);
+	
 	return 0;	
 }
