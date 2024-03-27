@@ -36,5 +36,8 @@ int main(){
 			R[i][j] = sqrt(pow(x, 2) + pow(y, 2) + pow(z, 2));
 		}
 	}
+
+//PART 3
+	double e[natom][natom];
 	return 0;	
 }
