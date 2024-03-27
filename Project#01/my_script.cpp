@@ -28,6 +28,7 @@ int main(){
 //PART 2
 	double R[natom][natom];	
 	double x, y, z;
+
 	for(int i=0; i < natom; i++){
 		for(int j=0; j < natom; j++){
 			x = coordinates[i][0] - coordinates[j][0];
@@ -38,6 +39,23 @@ int main(){
 	}
 
 //PART 3
-	double e[natom][natom];
-	return 0;	
+	double e[natom][natom][3];
+	double theta[natom][natom][natom];
+	for(int i=0; i < natom; i++){
+		for(int j=0; j < i; j++){
+			e[i][j][0] = -(coordinates[i][0] - coordinates[j][0])/R[i][j];
+			e[i][j][1] = -(coordinates[i][1] - coordinates[j][1])/R[i][j];
+			e[i][j][2] = -(coordinates[i][2] - coordinates[j][2])/R[i][j];
+		}
+	}
+	
+	for(int i=0; i < natom; i++){
+		for(int j=0; j < i; j++){
+			for(int k=0; k < j; k++){
+				theta[i][j][k] = acos((-e[i][j][0] * e[j][k][0]) + (-e[i][j][1] * e[j][k][1]) + (-e[i][j][2] * e[j][k][2])) * (180.0 / M_PI); 
+				printf("%2d-%2d-%2d %10.6f\n", i, j, k, theta[i][j][k]);
+			}
+		}
+	}
+	return 0;
 }
