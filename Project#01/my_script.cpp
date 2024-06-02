@@ -32,12 +32,12 @@ int main(){
 	double x, y, z;
 
 	for(int i=0; i < natom; i++){
-		for(int j=0; j < natom; j++){
+		for(int j=0; j < i; j++){
 			x = coordinates[i][0] - coordinates[j][0];
 			y = coordinates[i][1] - coordinates[j][1];
 			z = coordinates[i][2] - coordinates[j][2];
 			R[i][j] = sqrt(pow(x, 2) + pow(y, 2) + pow(z, 2));
-			printf("%2d-%2d %10.6f\n", i, j, R[i][j]);
+			printf("%2d-%2d %10.5f\n", i, j, R[i][j]);
 		}
 	}
 
@@ -72,13 +72,16 @@ int main(){
 		for(int j=0; j < natom; j++){
 			for (int k=0; k < natom; k++){
 				for(int l=0;  l < natom; l++){
-					if(i!=j && i!=k && i!=l && j!=k && j!=l && k!=l && R[i][k] < 4.0 && R[k][j] < 4.0 && R[k][l] < 4.0) { 
-						cross[0] = ((e[k][j][1]*e[k][l][2]) - (e[k][j][2]*e[k][l][1])); 
-						cross[1] = ((e[k][j][2]*e[k][l][0]) - (e[k][j][0]*e[k][l][2])); 
-						cross[2] = ((e[k][j][0]*e[k][l][1]) - (e[k][j][1]*e[k][l][0]));
+					//if(i!=j && i!=k && i!=l && j!=k && j!=l && k!=l && R[i][k] < 4.0 && R[k][j] < 4.0 && R[k][l] < 4.0) { 
+					if(i==0 && j==6 && k==4 && l==5) {
+						cross[0] =  ((e[j][k][1]*e[l][k][2]) - (e[j][k][2]*e[l][k][1]))/sin(phi[j][k][l]);
+						cross[1] = -((e[j][k][2]*e[l][k][0]) - (e[j][k][0]*e[l][k][2]))/sin(phi[j][k][l]);
+						cross[2] =  ((e[j][k][0]*e[l][k][1]) - (e[j][k][1]*e[l][k][0]))/sin(phi[j][k][l]);
+						printf("%10.6f\n", sin(phi[l][k][j]));
+						printf("%10.6f %10.6f %10.6f\n",cross[0], cross[1], cross[2]);
 						dot = (cross[0]*e[k][i][0]) + (cross[1]*e[k][i][1]) + (cross[2]*e[k][i][2]);
-						theta[i][j][k][l] = asin(dot/sin(phi[j][k][l]));
-						printf("%2d-%2d-%2d-%2d %10.6f\n", i, j, k, l, theta[i][j][k][l]);
+						theta[i][j][k][l] = asin(dot);
+						printf("%2d-%2d-%2d-%2d %10.6f\n", i, j, k, l, theta[i][j][k][l]*(180.0/M_PI));
 					}
 				}  
 			}
