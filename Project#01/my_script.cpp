@@ -77,11 +77,11 @@ int main(){
 						cross[0] =  ((e[j][k][1]*e[l][k][2]) - (e[j][k][2]*e[l][k][1]))/sin(phi[j][k][l]);
 						cross[1] = -((e[j][k][2]*e[l][k][0]) - (e[j][k][0]*e[l][k][2]))/sin(phi[j][k][l]);
 						cross[2] =  ((e[j][k][0]*e[l][k][1]) - (e[j][k][1]*e[l][k][0]))/sin(phi[j][k][l]);
-						printf("%10.6f\n", sin(phi[l][k][j]));
-						printf("%10.6f %10.6f %10.6f\n",cross[0], cross[1], cross[2]);
+						printf("%2d-%2d-%2d %10.6f\n", j, k, l, phi[j][k][l]*(180.0 / M_PI));
+						//printf("%10.6f %10.6f %10.6f\n",cross[0], cross[1], cross[2]);
 						dot = (cross[0]*e[k][i][0]) + (cross[1]*e[k][i][1]) + (cross[2]*e[k][i][2]);
 						theta[i][j][k][l] = asin(dot);
-						printf("%2d-%2d-%2d-%2d %10.6f\n", i, j, k, l, theta[i][j][k][l]*(180.0/M_PI));
+						//printf("%2d-%2d-%2d-%2d %10.6f\n", i, j, k, l, theta[i][j][k][l]*(180.0/M_PI));
 					}
 				}  
 			}
