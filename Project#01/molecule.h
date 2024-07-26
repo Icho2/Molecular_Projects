@@ -9,6 +9,7 @@ class Molecule
 		int charge;
 		int *zvals;
 		double **geom;
+		double** R = new double* [natom];
 		string point_group;
 
 		void print_geom();

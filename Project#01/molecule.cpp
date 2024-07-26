@@ -23,15 +23,15 @@ void Molecule::translate(double x, double y, double z)
 
 double Molecule::bond(int atom1, int atom2)
 {
-        double R;
+        double r;
         double x, y, z;
         
 	x = geom[atom2][0] - geom[atom1][0];
         y = geom[atom2][1] - geom[atom1][1];
         z = geom[atom2][2] - geom[atom1][2];
-        R = sqrt(pow(x, 2) + pow(y, 2) + pow(z, 2));
+        r = sqrt(pow(x, 2) + pow(y, 2) + pow(z, 2));
              
-	return R;
+	return r;
 }
 
 double Molecule::angle(int atom1, int atom2, int atom3)
@@ -52,7 +52,7 @@ double Molecule::angle(int atom1, int atom2, int atom3)
         ejk[2] = -(geom[atom2][2] - geom[atom3][2])/R;
 
         phi = acos((-eij[0] * ejk[0]) + (-eij[1] * ejk[1]) + (-eij[2] * ejk[2]));
-        
+       
 	delete[] eij;
         delete[] ejk;
 	
