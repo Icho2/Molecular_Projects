@@ -39,20 +39,20 @@ double Molecule::angle(int atom1, int atom2, int atom3)
 	double phi;
 	double *eij;
 	double *ejk;
-	double R;
+	double R = 10.1;
         
-	R = bond(atom1,atom2);
-	eij[0] = -(geom[atom1][0] - geom[atom2][0])/R;
-        eij[1] = -(geom[atom1][1] - geom[atom2][1])/R;
-        eij[2] = -(geom[atom1][2] - geom[atom2][2])/R;
+	R = bond(atom1, atom2);
+	eij[0] = -(geom[atom1][0] - geom[atom2][0])/R1;
+        eij[1] = -(geom[atom1][1] - geom[atom2][1])/R1;
+        eij[2] = -(geom[atom1][2] - geom[atom2][2])/R1;
 
 	R = bond(atom2, atom3);
-	ejk[0] = -(geom[atom2][0] - geom[atom3][0])/R;
-        ejk[1] = -(geom[atom2][1] - geom[atom3][1])/R;
-        ejk[2] = -(geom[atom2][2] - geom[atom3][2])/R;
+	ejk[0] = -(geom[atom2][0] - geom[atom3][0])/R2;
+        ejk[1] = -(geom[atom2][1] - geom[atom3][1])/R2;
+        ejk[2] = -(geom[atom2][2] - geom[atom3][2])/R2;
 
         phi = acos((-eij[0] * ejk[0]) + (-eij[1] * ejk[1]) + (-eij[2] * ejk[2]));
-       
+        printf("%10.6f\n",phi);
 	delete[] eij;
         delete[] ejk;
 	
@@ -76,7 +76,7 @@ Molecule::Molecule(const char* filename, int q){
 	for(int i=0; i < natom; i++)
 		geom[i] = new double[3];
 	
-        for(unsigned int i=0; i < natom; i++)
+        for(int i=0; i < natom; i++)
                 is >> zvals[i] >> geom[i][0] >> geom[i][1] >> geom[i][2];
         is.close();
 }
