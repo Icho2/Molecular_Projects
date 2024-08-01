@@ -39,7 +39,7 @@ int main()
 			for(int k=0; k < j; k++){
 				if(R[i][j] < 4.0 && R[j][k] < 4.0){
 					phi = mol.angle(i,j,k);
-					printf("%2d-%2d-%2d %10.6f\n", i, j, k, phi*(180.0 / M_PI));
+					printf("%2d-%2d-%2d %10.6f\n", i, j, k, phi*(180.0 / acos(-1.0)));
 				}
 			}
 		}
