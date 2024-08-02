@@ -45,5 +45,12 @@ int main()
 		}
   	}
 
+  //Part4
+  cout << "Out-of-Plane Angles" << endl;
+  	double theta;
+	for(int i=0; i < mol.atom; i++){
+		for(int j=0; j < i; j++){
+			for(int k=0; k < j; k++){
+				if(
   return 0;
 }

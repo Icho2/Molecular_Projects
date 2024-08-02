@@ -66,6 +66,9 @@ Molecule::oop_angle(int atom1, int atom2, int atom3, int atom4)
 	double ekj[3];
 	double ekl[3];
 	double eki[3];
+	double c1, c2, c3;
+	double ckjjl[3];
+	double theta;
 
 	ekj[0] = (geom[atom1][0] - geom[atom2][0])/bond(atom3, atom2);
         ekj[1] = (geom[atom1][1] - geom[atom2][1])/bond(atom3, atom2);
@@ -79,12 +82,17 @@ Molecule::oop_angle(int atom1, int atom2, int atom3, int atom4)
         eki[1] = (geom[atom1][1] - geom[atom2][1])/bond(atom3, atom1);
         eki[2] = (geom[atom1][2] - geom[atom2][2])/bond(atom3, atom1);
 
-	c1 = 
-	c2 = 
-	c3 =
+	c1 = (ekj[1]*ekl[2]) - (ekj[2]*ekl[1]);
+	c2 = (ekj[2]*ekl[0]) - (ekj[0]*ekl[2]);
+	c3 = (ekj[0]*ekl[1]) - (ekj[1]*ekl[0]);
 
-
-	((ekj[1]*ekl[2]) - (ekj[]*ekl[]) )/sin(angle(atom2, atom3, atom4));
+	ckjjl[0] = c1 / sin(angle(atom2, atom3, atom4));
+	ckjjl[1] = c2 / sin(angle(atom2, atom3, atom4));
+	ckjjl[2] = c3 / sin(angle(atom2, atom3, atom4));
+	
+	theta = asin((ckjjl[0]*eki[0]) + (ckjjl[1]*eki[1]) + (ckjjl[2]*eki[2])); 
+	
+	return theta;
 }
 //constructor
 Molecule::Molecule(const char* filename, int q){
