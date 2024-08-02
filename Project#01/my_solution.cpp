@@ -48,9 +48,16 @@ int main()
   //Part4
   cout << "Out-of-Plane Angles" << endl;
   	double theta;
-	for(int i=0; i < mol.atom; i++){
-		for(int j=0; j < i; j++){
-			for(int k=0; k < j; k++){
-				if(
+	for(int i=0; i < mol.natom; i++){
+		cout << i << endl;
+		for(int j=0; j < mol.natom; j++){
+			for(int k=0; k < mol.natom; k++){
+				for(int l=0; l < mol.natom; l++){
+					printf("%2d-%2d-%2d-%2d %10.6f\n", i, j, k, l, mol.oop_angle(i,j,k,l));
+				}
+			}
+		}
+	}
+
   return 0;
 }
