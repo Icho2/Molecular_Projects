@@ -49,11 +49,12 @@ int main()
   cout << "Out-of-Plane Angles" << endl;
   	double theta;
 	for(int i=0; i < mol.natom; i++){
-		cout << i << endl;
 		for(int j=0; j < mol.natom; j++){
 			for(int k=0; k < mol.natom; k++){
-				for(int l=0; l < mol.natom; l++){
-					printf("%2d-%2d-%2d-%2d %10.6f\n", i, j, k, l, mol.oop_angle(i,j,k,l));
+				for(int l=0; l < j; l++){
+					if(mol.bond(k,j)< 4.0 && mol.bond(k,l) < 4.0 && mol.bond(k,i) < 4.0 && i!=j && i!=k && i!=l && j!=k && j!=l && k!=l){
+						printf("%2d-%2d-%2d-%2d %10.6f\n", i, j, k, l, mol.oop_angle(i,j,k,l));
+					}
 				}
 			}
 		}
