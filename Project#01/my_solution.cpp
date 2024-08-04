@@ -46,19 +46,35 @@ int main()
   	}
 
   //Part4
-  cout << "Out-of-Plane Angles" << endl;
+  cout << "Out-of-Plane Angles:" << endl;
   	double theta;
 	for(int i=0; i < mol.natom; i++){
 		for(int j=0; j < mol.natom; j++){
 			for(int k=0; k < mol.natom; k++){
 				for(int l=0; l < j; l++){
 					if(mol.bond(k,j)< 4.0 && mol.bond(k,l) < 4.0 && mol.bond(k,i) < 4.0 && i!=j && i!=k && i!=l && j!=k && j!=l && k!=l){
-						printf("%2d-%2d-%2d-%2d %10.6f\n", i, j, k, l, mol.oop_angle(i,j,k,l));
+						printf("%2d-%2d-%2d-%2d %10.6f\n", i, j, k, l, mol.oop_angle(i,j,k,l)*(180.0 / acos(-1.0)));
 					}
 				}
 			}
 		}
 	}
 
+  //Part5
+  cout << "Torsion/Dihedral Angles:" << endl;
+  double tau;
+        //for(int i=0; i < mol.natom; i++){
+        //        for(int j=0; j < mol.natom; j++){
+        //                for(int k=0; k < mol.natom; k++){
+        //                        for(int l=0; l < j; l++){
+        //                                if(mol.bond(k,j)< 4.0 && mol.bond(k,l) < 4.0 && mol.bond(k,i) < 4.0 && i!=j && i!=k && i!=l && j!=k && j!=l && k!=l){
+        //                                        printf("%2d-%2d-%2d-%2d %10.6f\n", i, j, k, l, mol.torsion(i,j,k,l)*(180.0 / M_PI));
+        //                                }
+        //                        }
+        //                }
+        //        }
+        //}
+	printf("%2d-%2d-%2d-%2d %10.6f\n", 3, 2, 1, 0, mol.torsion(3,2,1,0)*(180.0 / M_PI));
+  
   return 0;
 }

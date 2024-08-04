@@ -41,8 +41,6 @@ double Molecule::angle(int atom1, int atom2, int atom3)
 	double eij[3];
 	double ejk[3];
 	double R;
-
-	//cout << "it works here" << endl;
         
 	R = bond(atom1, atom2);
 	eij[0] = (geom[atom1][0] - geom[atom2][0])/R;
@@ -55,7 +53,6 @@ double Molecule::angle(int atom1, int atom2, int atom3)
         ejk[2] = -(geom[atom2][2] - geom[atom3][2])/R;
 
         phi = acos((eij[0] * ejk[0]) + (eij[1] * ejk[1]) + (eij[2] * ejk[2]));
-	
 	
 	return phi;	
 	
@@ -100,7 +97,56 @@ double Molecule::oop_angle(int atom1, int atom2, int atom3, int atom4)
 	//dot product
 	theta = asin((ckjjl[0]*eki[0]) + (ckjjl[1]*eki[1]) + (ckjjl[2]*eki[2])); 
 	
-	return theta*(180.0 / acos(-1.0));
+	return theta;
+}
+
+double Molecule::torsion(int atom1, int atom2, int atom3, int atom4)
+{
+	double tau;
+	double eij[3];
+	double ejk[3];
+	double ekl[3];
+	double cross1[3];
+	double cross2[3];
+	double dot;
+
+	eij[0] = -(geom[atom1][0] - geom[atom2][0])/bond(atom1, atom2);
+        eij[1] = -(geom[atom1][1] - geom[atom2][1])/bond(atom1, atom2);
+        eij[2] = -(geom[atom1][2] - geom[atom2][2])/bond(atom1, atom2);
+
+	ejk[0] = -(geom[atom2][0] - geom[atom3][0])/bond(atom2, atom3);
+        ejk[1] = -(geom[atom2][1] - geom[atom3][1])/bond(atom2, atom3);
+        ejk[2] = -(geom[atom2][2] - geom[atom3][2])/bond(atom2, atom3);
+
+	ekl[0] = -(geom[atom3][0] - geom[atom4][0])/bond(atom3, atom4);
+        ekl[1] = -(geom[atom3][1] - geom[atom4][1])/bond(atom3, atom4);
+        ekl[2] = -(geom[atom3][2] - geom[atom4][2])/bond(atom3, atom4);
+
+	//eij x ejk
+	cross1[0] = (eij[1]*ejk[2]) - (eij[2]*ejk[1]);
+        cross1[1] = (eij[2]*ejk[0]) - (eij[0]*ejk[2]);
+        cross1[2] = (eij[0]*ejk[1]) - (eij[1]*ejk[0]);
+	
+	//ejk x ekl
+	cross2[0] = (ejk[1]*ekl[2]) - (ejk[2]*ekl[1]);
+        cross2[1] = (ejk[2]*ekl[0]) - (ejk[0]*ekl[2]);
+        cross2[2] = (ejk[0]*ekl[1]) - (ejk[1]*ekl[0]);
+
+	//dot product
+	dot = (cross1[0]*cross2[0]) + (cross1[1]*cross2[1]) + (cross1[2]*cross2[2]);
+	
+	tau = dot / (sin(angle(atom1, atom2, atom3)) * sin(angle(atom2, atom3, atom4)));
+	
+	if(tau > -1.000001 && tau < -1.000000){
+		tau = -1;
+	}
+
+	if(tau < 1.000001 && tau > 1.000000){
+		tau = 1;
+	}
+	
+	tau = acos(dot / (sin(angle(atom1, atom2, atom3)) * sin(angle(atom2, atom3, atom4))));
+	return tau;
 }
 //constructor
 Molecule::Molecule(const char* filename, int q){
