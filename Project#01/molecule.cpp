@@ -5,6 +5,7 @@
 #include <cassert>
 #include <cmath>
 #include <iostream>
+#include <map>
 using namespace std;
 
 //functions
@@ -148,6 +149,18 @@ double Molecule::torsion(int atom1, int atom2, int atom3, int atom4)
 	tau = acos(tau);
 	
 	return tau;
+}
+
+double Molecule::com(string cartesian)
+{
+	map<int, double> masses{{1, 1.0078}, {6, 12.011}, {8, 15.999}};
+	map<string, int> axis{{"x", 0}, {"y", 1}, {"z", 2}}; 
+	double cm;
+	
+	for(int i=0; i < natom; i++)
+		cm += (masses[zvals[i]] * geom[i][axis[cartesian]])/masses[zvals[i]];
+	
+	return cm;
 }
 //constructor
 Molecule::Molecule(const char* filename, int q){

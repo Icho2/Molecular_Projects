@@ -75,5 +75,12 @@ int main()
                 }
         }
   
+  //Part6
+  cout << "Center-of-Mass Translation:" << endl;
+  
+  printf("X_cm = %10.6f\n", mol.com("x"));	
+  printf("Y_cm = %10.6f\n", mol.com("y"));
+  printf("Z_cm = %10.6f\n", mol.com("z"));
+
   return 0;
 }
