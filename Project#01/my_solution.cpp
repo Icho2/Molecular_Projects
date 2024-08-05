@@ -78,7 +78,11 @@ int main()
   //Part6
   cout << "Center-of-Mass Translation:" << endl;
   
-  printf("Center of Mass :	%.4f	%.4f	%.4f\n ", mol.com("x"), mol.com("y"), mol.com("z"));	
+  printf("%.4f	%.4f	%.4f\n ", mol.com("x"), mol.com("y"), mol.com("z"));	
 
+  //Part7
+  cout << "Principal Moments of Inertia" << endl;
+
+  
   return 0;
 }

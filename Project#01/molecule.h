@@ -20,6 +20,7 @@ class Molecule
 		double oop_angle(int atom1, int atom2, int atom3, int atom4);
 		double torsion(int atom1, int atom2, int atom3, int atom4);
 		double com(string cartesian);		
+		double pmi(string cartesian1, string cartesian2);
 
 		Molecule(const char* filename, int q);
 		~Molecule();

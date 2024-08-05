@@ -162,13 +162,30 @@ double Molecule::com(string cartesian)
 	for(int i=0; i < natom; i++){
 		eq1 += masses[zvals[i]] * geom[i][axis[cartesian]];
 		eq2 += masses[zvals[i]];
-		//cout << "eq1:" << eq1 << endl;
-		//cout << "masses[zvals[i]]" << masses[zvals[i]] << endl;
-		//cout << "geom[i][axis[cartesian]]" << geom[i][axis[cartesian]] << endl;
 	}
 		cm = eq1/eq2;
 
 	return cm;
+}
+
+double Molecule::pmi(string cartesian1, string cartesian2)
+{
+	map<int, double> masses{{1, 1.0078}, {6, 12.011}, {8, 15.999}};
+        map<string, int> axis{{"x", 0}, {"y", 1}, {"z", 2}};
+	double I = 0.0;
+	
+	//diagonal
+	if(cartesian1 == cartesian2){
+		for(int i=0; i < natom; i++){
+			I = masses[zvals[i]] * (geom[i][axis[cartesian1]])
+		}
+	}
+
+	else{
+		for(int i=0; i < natom; i++){
+			I = masses[zvals[i]] * geom[i][axis[cartesian1]] * cartesian2[i][axis[cartesian2]];
+		}
+	}
 }
 //constructor
 Molecule::Molecule(const char* filename, int q){
