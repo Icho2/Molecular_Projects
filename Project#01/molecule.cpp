@@ -155,11 +155,19 @@ double Molecule::com(string cartesian)
 {
 	map<int, double> masses{{1, 1.0078}, {6, 12.011}, {8, 15.999}};
 	map<string, int> axis{{"x", 0}, {"y", 1}, {"z", 2}}; 
-	double cm;
-	
-	for(int i=0; i < natom; i++)
-		cm += (masses[zvals[i]] * geom[i][axis[cartesian]])/masses[zvals[i]];
-	
+	double eq1 = 0.0;
+	double eq2 = 0.0;
+	double cm = 0.0;
+
+	for(int i=0; i < natom; i++){
+		eq1 += masses[zvals[i]] * geom[i][axis[cartesian]];
+		eq2 += masses[zvals[i]];
+		//cout << "eq1:" << eq1 << endl;
+		//cout << "masses[zvals[i]]" << masses[zvals[i]] << endl;
+		//cout << "geom[i][axis[cartesian]]" << geom[i][axis[cartesian]] << endl;
+	}
+		cm = eq1/eq2;
+
 	return cm;
 }
 //constructor
