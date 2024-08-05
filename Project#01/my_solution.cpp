@@ -4,7 +4,9 @@
 #include <iomanip>
 #include <cstdio>
 #include <math.h>
+#include "eigen-3.4.0/Eigen/Dense"
 
+using namespace Eigen;
 using namespace std;
 
 int main()
@@ -82,7 +84,22 @@ int main()
 
   //Part7
   cout << "Principal Moments of Inertia" << endl;
+  MatrixXd I(3, 3);
+  I(0,0) = mol.pmi("x","x");
+  I(0,1) = mol.pmi("x","y");
+  I(0,2) = mol.pmi("x","z");
+  I(1,0) = mol.pmi("y","x");
+  I(1,1) = mol.pmi("y","y");
+  I(1,2) = mol.pmi("y","z");
+  I(2,0) = mol.pmi("z","x");
+  I(2,1) = mol.pmi("z","y");
+  I(2,2) = mol.pmi("z","z");
 
+  cout << "Here is matrix I:\n" << I << endl;
+  
+  SelfAdjointEigenSolver<MatrixXd> eigensolver(I);
+  if (eigensolver.info() != Eigen::Success) abort();
+  cout << "Here are the eigenvalues of matrix I:\n" << eigensolver.eigenvalues() << endl;
   
   return 0;
 }

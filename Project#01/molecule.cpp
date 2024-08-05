@@ -174,18 +174,35 @@ double Molecule::pmi(string cartesian1, string cartesian2)
         map<string, int> axis{{"x", 0}, {"y", 1}, {"z", 2}};
 	double I = 0.0;
 	
+	
 	//diagonal
 	if(cartesian1 == cartesian2){
+		if(cartesian1 == "x"){
+			for(int i=0; i < natom; i++){
+				I = masses[zvals[i]] * (pow(geom[i][axis["y"]], 2) + pow(geom[i][axis["z"]], 2));
+			}
+		}
+		if(cartesian1 == "y"){
+			for(int i=0; i < natom; i++){
+				I = masses[zvals[i]] * (pow(geom[i][axis["x"]], 2) + pow(geom[i][axis["z"]], 2));
+			}
+		}
+	
+		if(cartesian1 == "z"){
+                        for(int i=0; i < natom; i++){
+                                I = masses[zvals[i]] * (pow(geom[i][axis["x"]], 2) + pow(geom[i][axis["y"]], 2));
+                        }
+                }
+	}
+	
+	//off-diagonal
+	else{
 		for(int i=0; i < natom; i++){
-			I = masses[zvals[i]] * (geom[i][axis[cartesian1]])
+			I = masses[zvals[i]] * geom[i][axis[cartesian1]] * geom[i][axis[cartesian2]];
 		}
 	}
 
-	else{
-		for(int i=0; i < natom; i++){
-			I = masses[zvals[i]] * geom[i][axis[cartesian1]] * cartesian2[i][axis[cartesian2]];
-		}
-	}
+	return I;
 }
 //constructor
 Molecule::Molecule(const char* filename, int q){
