@@ -145,7 +145,8 @@ double Molecule::torsion(int atom1, int atom2, int atom3, int atom4)
 		tau = 1;
 	}
 	
-	tau = acos(dot / (sin(angle(atom1, atom2, atom3)) * sin(angle(atom2, atom3, atom4))));
+	tau = acos(tau);
+	
 	return tau;
 }
 //constructor
