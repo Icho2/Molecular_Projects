@@ -85,7 +85,8 @@ int main()
   //Part7
   cout << "Principal Moments of Inertia:" << endl;
   MatrixXd I(3, 3);
-  I(0,0) = mol.pmi("x","x");
+  VectorXd egval(3);
+  I(0,0) =  mol.pmi("x","x");
   I(0,1) = -mol.pmi("x","y");
   I(0,2) = -mol.pmi("x","z");
   I(1,0) =  mol.pmi("y","x");
@@ -102,15 +103,27 @@ int main()
   cout << "Here are the principal moments of inertia (eigenvalues) in amu bohr^2, amu A^2, and g cm^2,respectively:\n" << endl;
   printf("amu bohr^2:\n");
   cout << eigensolver.eigenvalues() << endl;
+  cout << "" << endl;
   printf("amu A^2:\n");
   cout << eigensolver.eigenvalues()*pow(0.53,2) << endl;
+  cout << "" << endl;
   printf("g cm^2:\n");
   cout << eigensolver.eigenvalues()*pow(5.29177249e-10,2)*1.66054e-24 << endl;
  
-  printf("Based on these moments of inertia, our molecule is a asymmetric rotor.")
+  printf("Based on these moments of inertia, our molecule is a asymmetric rotor.");
   
   //Part8
   cout << "Rotational Constants:" << endl;
+  double c = 2.99e10;
+  double h = 6.62607015e-34;
+  double A = 0.00;
+  double B = 0.00;
+  double C = 0.00;
+  
+  A = (h*1e3)/(8*pow(M_PI,2)*c*(eigensolver.eigenvalues()(0)*pow(5.29177249e-10,2)*1.66054e-24));
+  B = (h*1e3)/(8*pow(M_PI,2)*c*(eigensolver.eigenvalues()(1)*pow(5.29177249e-10,2)*1.66054e-24));
+  C = (h*1e3)/(8*pow(M_PI,2)*c*(eigensolver.eigenvalues()(2)*pow(5.29177249e-10,2)*1.66054e-24));
 
+  cout << "Rotational Constants: " << A << " " << B << " " << C << endl; 
   return 0;
 }
