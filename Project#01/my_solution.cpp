@@ -83,7 +83,7 @@ int main()
   printf("%.4f	%.4f	%.4f\n ", mol.com("x"), mol.com("y"), mol.com("z"));	
 
   //Part7
-  cout << "Principal Moments of Inertia" << endl;
+  cout << "Principal Moments of Inertia:" << endl;
   MatrixXd I(3, 3);
   I(0,0) = mol.pmi("x","x");
   I(0,1) = -mol.pmi("x","y");
@@ -108,5 +108,9 @@ int main()
   cout << eigensolver.eigenvalues()*pow(5.29177249e-10,2)*1.66054e-24 << endl;
  
   printf("Based on these moments of inertia, our molecule is a asymmetric rotor.")
+  
+  //Part8
+  cout << "Rotational Constants:" << endl;
+
   return 0;
 }
