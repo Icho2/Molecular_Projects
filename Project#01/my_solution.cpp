@@ -86,20 +86,27 @@ int main()
   cout << "Principal Moments of Inertia" << endl;
   MatrixXd I(3, 3);
   I(0,0) = mol.pmi("x","x");
-  I(0,1) = mol.pmi("x","y");
-  I(0,2) = mol.pmi("x","z");
-  I(1,0) = mol.pmi("y","x");
-  I(1,1) = mol.pmi("y","y");
-  I(1,2) = mol.pmi("y","z");
-  I(2,0) = mol.pmi("z","x");
-  I(2,1) = mol.pmi("z","y");
-  I(2,2) = mol.pmi("z","z");
+  I(0,1) = -mol.pmi("x","y");
+  I(0,2) = -mol.pmi("x","z");
+  I(1,0) =  mol.pmi("y","x");
+  I(1,1) =  mol.pmi("y","y");
+  I(1,2) = -mol.pmi("y","z");
+  I(2,0) =  mol.pmi("z","x");
+  I(2,1) =  mol.pmi("z","y");
+  I(2,2) =  mol.pmi("z","z");
 
-  cout << "Here is matrix I:\n" << I << endl;
-  
+  cout << "Here is moment of inertia tensor:\n" << I << endl;
+
   SelfAdjointEigenSolver<MatrixXd> eigensolver(I);
   if (eigensolver.info() != Eigen::Success) abort();
-  cout << "Here are the eigenvalues of matrix I:\n" << eigensolver.eigenvalues() << endl;
-  
+  cout << "Here are the principal moments of inertia (eigenvalues) in amu bohr^2, amu A^2, and g cm^2,respectively:\n" << endl;
+  printf("amu bohr^2:\n");
+  cout << eigensolver.eigenvalues() << endl;
+  printf("amu A^2:\n");
+  cout << eigensolver.eigenvalues()*pow(0.53,2) << endl;
+  printf("g cm^2:\n");
+  cout << eigensolver.eigenvalues()*pow(5.29177249e-10,2)*1.66054e-24 << endl;
+ 
+  printf("Based on these moments of inertia, our molecule is a asymmetric rotor.")
   return 0;
 }
