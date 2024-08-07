@@ -1,15 +1,12 @@
 #include <iostream>                                                                                                                                                              
 #include <fstream>                                                                                                                                                                
-#include "molecule.h"                                                                                                                                                             
 #include <cassert>                                                                                                                                                                
 #include <string>              
 #include "../Project#01/eigen-3.4.0/Eigen/Dense"
 
-using namespace std;                                                                                                                                                              
-using namespace Eigen;                                                                                                                                                                                  
+using namespace std;                                                                        using namespace Eigen;                                                                                                                                                                                  
 
 int main(){
-	Molecule mol("input/h2o/DZ/geom.dat" ,0);
 	string line;
 	double integral;
 	int mu, nu;
@@ -39,13 +36,11 @@ int main(){
 	
 	for(int i=0; i < lines; i++){
 		file3 >> mu >> nu >> integral;
-		printf("%d %d %.5f\n", mu, nu, integral);
 		S(mu, nu) = integral;
 	       	
 	}
 	file3.close();
 
-	printf("S matrix:\n");
-	cout << S << endl;
+	
 	return 0;
 }       

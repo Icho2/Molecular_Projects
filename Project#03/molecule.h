@@ -10,8 +10,6 @@ class Molecule
 		int *zvals;
 		double **geom;
 		double **R;
-		double **S_overlap;
-	        double n_repulsion_energy;	
 		string point_group;
 
 		void print_geom();
@@ -23,7 +21,8 @@ class Molecule
 		double torsion(int atom1, int atom2, int atom3, int atom4);
 		double com(string cartesian);		
 		double pmi(string cartesian1, string cartesian2);
-
+		
+		
 		Molecule(const char* filename, int q);
 		~Molecule();
 };
