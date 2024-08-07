@@ -16,37 +16,36 @@ int main(){
 	int lines = 0;
 
 	//Step1
-	ifstream is("input/h2o/STO-3G/enuc.dat");
-	assert(is.good());
+	ifstream file1("input/h2o/STO-3G/enuc.dat");
+	assert(file1.good());
 	
-	is >> mol.n_repulsion_energy;
+	file1 >> mol.n_repulsion_energy;
 	printf("%.15f\n", mol.n_repulsion_energy);
-	is.close();
+	file1.close();
 	
 	//Step2
-	is.open("input/h2o/STO-3G/s.dat");
-	assert(is.good());
+	ifstream file2("input/h2o/STO-3G/s.dat");
+	assert(file2.good());
 	
-	while(!is.eof()){ //checking how many lines are present in the file
+	while(getline(file2,line)){ //checking how many lines are present in the file
 		lines += 1;
 	}
 	cout << lines << endl;
-
-	is.clear(); //now we go back to the top of the file
-	is.seekg(0, ios::beg);
-        assert(is.good());
+	file2.close(); //now we go back to the top of the file
 	
+	ifstream file3("input/h2o/STO-3G/s.dat");
+	assert(file3.good());
 	MatrixXd S(lines, lines);
 	
-	while(!is.eof()){
-		is >> mu >> nu >> integral;
+	for(int i=0; i < lines; i++){
+		file3 >> mu >> nu >> integral;
 		printf("%d %d %.5f\n", mu, nu, integral);
 		S(mu, nu) = integral;
 	       	
 	}
-	is.close();
+	file3.close();
 
-	//printf("S matrix:\n");
-	//cout << S << endl;
+	printf("S matrix:\n");
+	cout << S << endl;
 	return 0;
 }       
