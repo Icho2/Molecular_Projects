@@ -18,6 +18,6 @@ class HF
 		void get_n_repulsion_energy(string filepath);
 		MatrixXd two_variable_integrals(string filepath);
 
-		HF();
+		HF(string filepath);
 		~HF();  
 };

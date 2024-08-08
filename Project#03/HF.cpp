@@ -8,15 +8,6 @@ using namespace std;
 using namespace Eigen;
 
 //functions
-void HF::get_n_repulsion_energy(string filepath)
-{
-	ifstream file(filepath);
-	assert(file.good());
-
-	file >> n_repulsion_energy;
-	file.close();
-}
-
 MatrixXd HF::two_variable_integrals(string filepath)
 {
 	string line;
@@ -47,3 +38,14 @@ MatrixXd HF::two_variable_integrals(string filepath)
 	return S;
 }
 
+HF::HF(string filepath){
+	ifstream file(filepath);
+        assert(file.good());
+
+        file >> n_repulsion_energy;
+        file.close();
+}
+HF::~HF()
+{
+
+}
